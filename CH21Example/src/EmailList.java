@@ -25,7 +25,7 @@ public class EmailList {
         	System.out.println("In if statement");
             message = "This email address already exists. " +
                     "Please enter another email address";
-            String a= "index.xhtml";
+            String a= "index";
             System.out.println(a);
             return a;
         } else {
