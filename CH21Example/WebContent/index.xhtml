@@ -37,6 +37,14 @@
                          requiredMessage="A last name is required"/>
             <h:message showSummary="true" showDetail="false"
                        for="lastName" class="error" /><br />
+			
+			<label class="pad_top">Year of Birth:</label>
+			<h:inputText id="BYear" label="BYear" value="#{emailList.user.birthyear}">
+    		<f:validateLongRange minimum="1900" maximum="2014"
+    		requiredMessage="Birth range must be between 1900 and 2014"/>
+            <h:message showSummary="true" showDetail="false"
+                       for="bYear" class="error" /><br />
+			</h:inputText>
 
             <label>&nbsp;</label>
             <h:commandButton id="submit"

@@ -1,14 +1,13 @@
 package model;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
+
 
 /**
  * The persistent class for the USERS database table.
  * 
  */
-
 @Entity
 @Table(name="USERS", schema="TESTDB")
 @NamedQuery(name="Users.findAll", query="SELECT u FROM Users u")
@@ -19,6 +18,8 @@ public class Users implements Serializable {
 	@SequenceGenerator(schema="TESTDB", name="USERS_ID_GENERATOR", sequenceName="USERS_ID_GENERATOR", allocationSize=1 )
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="USERS_ID_GENERATOR")
 	private long userid;
+
+	private String birthyear;
 
 	private String email;
 
@@ -35,6 +36,14 @@ public class Users implements Serializable {
 
 	public void setUserid(long userid) {
 		this.userid = userid;
+	}
+
+	public String getBirthyear() {
+		return this.birthyear;
+	}
+
+	public void setBirthyear(String birthyear) {
+		this.birthyear = birthyear;
 	}
 
 	public String getEmail() {
