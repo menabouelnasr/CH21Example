@@ -12,9 +12,8 @@
         <link rel="stylesheet" href="style/main.css" type="text/css"/>
     </h:head>
     <h:body>
-        <h1>Join our email list</h1>
-        <p>To join our email list, enter your name and
-           email address below.</p>
+        <h1>Welcome To The To-Do List</h1>
+        <p>Please Enter Your User Information</p>
         <c:if test="${emailList.message != null}">        
             <p class="error">#{emailList.message}</p>
         </c:if>
@@ -43,7 +42,7 @@
 			<label class="pad_top">Year of Birth:</label>
 			<h:inputText id="BYear" label="BYear" value="#{emailList.user.birthyear}">
     		<f:validateLongRange minimum="1900" maximum="2014"/><br />
-   
+
 			</h:inputText>
 
             <label>&nbsp;</label>

@@ -4,6 +4,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
+import model.Todolist;
 import model.Users;
 
 
@@ -69,7 +70,37 @@ public class UserDB {
             em.close();
         }
     }
+    
+    public static Users selectList(String userID) {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        String qString = "SELECT t FROM Todolist t " +
+                "WHERE t.userid = :userid";
+        TypedQuery<Users> q = em.createQuery(qString, Users.class);
+        q.setParameter("userid", userID);
+        try {
+            Users user = q.getSingleResult();
+            return user;
+        } catch (NoResultException e) {
+            return null;
+        } finally {
+            em.close();
+        }
+    }
 
+    public static void insertList(Todolist list) {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        trans.begin();        
+        try {
+            em.persist(list);
+            trans.commit();
+        } catch (Exception e) {
+            System.out.println(e);
+            trans.rollback();
+        } finally {
+            em.close();
+        }
+    }
     public static boolean emailExists(String email) {
         Users u = selectUser(email);   
         return u != null;

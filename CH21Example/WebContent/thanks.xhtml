@@ -9,12 +9,12 @@
         <link rel="stylesheet" href="style/main.css" type="text/css"/>
     </h:head>
     <h:body>
-        <h1>Thanks for joining our email list</h1>
+        <h1>#{emailList.user.firstname}'s To Do List</h1>
+        $_SESSION["userID"] = #{emailList.user.userid};
+        <p></p>
         
-        <p>Here is the information you entered:</p>
-        
-        <label>Email:</label>
-        <span>#{emailList.user.email}</span><br />
+        <label>Name:</label>
+        <span>#{emailList.list.name}</span><br />
         <label>First Name:</label>
         <span>#{emailList.user.firstname}</span><br />
         <label>Last Name:</label>

@@ -3,6 +3,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
+import model.Todolist;
 import model.Users;
 
 @ManagedBean
@@ -10,6 +11,7 @@ import model.Users;
 public class EmailList {
     private Users user;
     private String message;
+    private Todolist list;
     
     public EmailList() {
     }
@@ -25,14 +27,19 @@ public class EmailList {
         	System.out.println("In if statement");
             message = "This email address already exists. " +
                     "Please enter another email address";
-            String a= "index";
+            String a= "thanks";
             System.out.println(a);
             return a;
         } else {
         	System.out.println("In else statement");
-            UserDB.insert(user);
+            //UserDB.insert(user);
             return "thanks";
         }
+    }
+    
+    public void addToList(Todolist list)
+    {
+    	UserDB.insertList(list);
     }
 
     public Users getUser() {
@@ -46,4 +53,13 @@ public class EmailList {
     public String getMessage() {
         return message;
     }
+
+	public Todolist getList() {
+		return list;
+	}
+
+	public void setList(Todolist list) {
+		this.list = list;
+	}
+    
 }
